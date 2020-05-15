@@ -14,6 +14,10 @@ const appRoutes: Routes = [
 
 
 @NgModule({
+  declarations: [
+    LoginComponent,
+    LayoutComponent
+  ],
   imports: [
     RouterModule.forChild(appRoutes),
     SharedModule
