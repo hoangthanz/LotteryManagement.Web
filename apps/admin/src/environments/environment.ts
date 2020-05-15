@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  lotteryDomain: '192.168.1.1:6666',
+  imageDomain: '192.168.1.1:6669',
 };
 
 /*
