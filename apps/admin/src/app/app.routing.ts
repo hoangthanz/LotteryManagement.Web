@@ -4,7 +4,7 @@ import { LoginComponent } from './business-modules/login/login.component';
 import { PageNotFoundComponent } from 'libs/ui/src/lib/page-not-found/page-not-found.component';
 import { SharedModule } from './shared/modules/shared/shared.module';
 
-const routes: Routes = [
+const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '404', component: PageNotFoundComponent },
 ];
@@ -12,12 +12,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(
-      routes,
-      {
-        enableTracing: false,
-      }
-    ),
+    RouterModule.forChild(appRoutes),
     SharedModule
   ],
   exports: [

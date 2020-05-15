@@ -15,7 +15,7 @@ import { BaseComponentService } from './base-component.service';
     MatDividerModule,
     MatDialogModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   exports: [
   ],
