@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/modules/shared/shared.module';
 import { AppRoutingModule } from './app.routing';
@@ -16,11 +16,19 @@ import { AppRoutingModule } from './app.routing';
     AppRoutingModule,
     BrowserModule,
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
-    BrowserAnimationsModule,    
+    BrowserAnimationsModule,
     SharedModule.forRoot(),
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [
+    RouterModule
+  ]
 })
-export class AppModule {}
+
+export class AppModule {
+  constructor(router: Router) {
+
+  }
+}
