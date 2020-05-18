@@ -9,17 +9,22 @@ import { LoginService } from '../../shared/services/login-service/login.service'
 export class LoginComponent implements OnInit {
   public userName: string;
   public password: string;
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   public login() {
-    var formData: any = new FormData();
-    formData.append('UserName', this.userName);
-    formData.append('Password', this.password);
-    formData.append('RememberMe', true);
+    // var formData: any = new FormData();
+    // formData.append('UserName', this.userName);
+    // formData.append('Password', this.password);
+    // formData.append('RememberMe', true);
 
-    this.loginService.login(formData).subscribe(
+    const user = {
+      userName: this.userName,
+      password: this.password,
+      rememberMe: true
+    };
+    this.loginService.login(user).subscribe(
       (response) => console.log(response),
       (error) => console.log(error)
     );
