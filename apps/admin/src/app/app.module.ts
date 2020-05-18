@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app.routing';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './shared/services/interceptor.service';
+import { BaseComponentService } from 'libs/ui/src/lib/base-component.service';
+import { ToastrModule } from 'ngx-toastr';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -22,6 +24,7 @@ export function tokenGetter() {
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
     SharedModule.forRoot(),
+    ToastrModule.forRoot(),
 
     JwtModule.forRoot({
       config: {
@@ -38,6 +41,7 @@ export function tokenGetter() {
       useClass: TokenInterceptor,
       multi: true,
     },
+    BaseComponentService
   ],
   bootstrap: [AppComponent],
   exports: [RouterModule],

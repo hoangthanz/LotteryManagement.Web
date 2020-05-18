@@ -9,10 +9,10 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 export class BaseComponentService {
 
   constructor(
-    private toastr: ToastrService,
-    private router: Router,
-    private currencyPipe: CurrencyPipe,
-    private datePipe: DatePipe,
+    public toastr: ToastrService,
+    public router: Router,
+    public currencyPipe: CurrencyPipe,
+    public datePipe: DatePipe,
 
   ) { }
 
@@ -63,7 +63,7 @@ export class BaseComponentService {
   }
 
   public GoTo(path: string) {
-    this.router.navigate([path]);
+    this.router.navigateByUrl(path);
   }
 
 }
