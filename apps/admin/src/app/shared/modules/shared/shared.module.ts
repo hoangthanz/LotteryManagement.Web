@@ -37,6 +37,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { UiModule } from 'libs/ui/src/lib/ui.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginService } from '../../services/login-service/login.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -128,6 +129,7 @@ export class SharedModule {
         DatePipe,
         CurrencyPipe,
         DecimalPipe,
+        LoginService
       ]
     };
   }

@@ -6,12 +6,16 @@ import { RouterModule, Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/modules/shared/shared.module';
 import { AppRoutingModule } from './app.routing';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './shared/services/interceptor.service';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -19,16 +23,25 @@ import { AppRoutingModule } from './app.routing';
     BrowserAnimationsModule,
     SharedModule.forRoot(),
 
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: [],
+        blacklistedRoutes: [],
+        skipWhenExpired: true,
+      },
+    }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
-  exports: [
-    RouterModule
-  ]
+  exports: [RouterModule],
 })
-
 export class AppModule {
-  constructor(router: Router) {
-
-  }
+  constructor(router: Router) {}
 }
