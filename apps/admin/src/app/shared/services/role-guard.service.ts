@@ -7,7 +7,7 @@ import { AuthenticationService } from './authentication.service';
   providedIn: 'root',
 })
 export class RoleGuardService implements CanActivate {
-  constructor(public auth: AuthenticationService, public router: Router) {}
+  constructor(public auth: AuthenticationService, public router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
     const expectedRole = route.data.expectedRole;

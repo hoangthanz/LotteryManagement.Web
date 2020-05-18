@@ -27,16 +27,16 @@ export class LoginComponent extends BaseComponentService implements OnInit {
   ngOnInit() { }
 
   public login() {
-    // var formData: any = new FormData();
-    // formData.append('UserName', this.userName);
-    // formData.append('Password', this.password);
-    // formData.append('RememberMe', true);
+    var user: any = new FormData();
+    user.append('UserName', this.userName);
+    user.append('Password', this.password);
+    user.append('RememberMe', true);
 
-    const user = {
-      userName: this.userName,
-      password: this.password,
-      rememberMe: true
-    };
+    // const user = {
+    //   userName: this.userName,
+    //   password: this.password,
+    //   rememberMe: true
+    // };
     this.loginService.login(user).subscribe(
       (response: any) => {
         localStorage.setItem('token', response.token);
